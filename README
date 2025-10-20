@@ -1,0 +1,73 @@
+Project : CI/CD pipeline to build and deploy a web app.
+This project will help you build, test, Dockerize, and deploy a simple Node.js app using GitHub Actions and Docker Hub. No experience required—just follow each step!
+A simple *Node.js demo application* to demonstrate *CI/CD automation with GitHub Actions and Docker Hub.  
+Whenever you push code to GitHub, the app automatically builds a new Docker image and pushes it to Docker Hub.
+
+What You Will Learn
+How to install Node.js, npm, Docker, Git, and GitHub Desktop
+How to set up folders and files for a Node.js web app
+How to build and run your app locally and in Docker
+How to automate everything using a professional CI/CD pipeline
+
+Tools Needed
+Node.js & npm: Download from https://nodejs.org
+Git: Download from https://git-scm.com
+Docker Desktop: https://www.docker.com/products/docker-desktop
+A GitHub account: https://github.com
+A Docker Hub account: https://hub.docker.com 
+
+Step-by-Step Setup
+1. Install Required Tools
+Download and install Node.js (includes npm)
+Download and install Git
+Download and install Docker Desktop and sign in with your Docker Hub account
+Create accounts at GitHub and Docker Hub (if you don’t have them)
+
+Create Project Folder and Files
+Open Git and run the below commands
+First Clone This Repository by running the "git clone https://github.com/Manipal-0831/nodejs-demo-app.git"
+then run below commands
+cd nodejs-demo-app
+npm init -y (use if not cloned )
+npm install express
+npm start 
+
+Create Secrects
+First go to docker hub and create personal access token with read,write,delete permissions 
+Set GitHub Secrets
+Go to
+Your Repository → Settings → Secrets and Variables → Actions
+Add two secrets:
+DOCKER_USERNAME (your Docker Hub username)
+DOCKERHUB_TOKEN (Docker Hub access personal access token)
+
+Trigger the GitHub workflow
+now you see the result in on GitHub Actions 
+Green tick indicates successful 
+Red tick indicates error
+After Green tick 
+build the latest image from docker hub to local and run a container for local testing 
+for that run the below commands
+Build your Docker image (replace yourdockerhubusername):
+docker build -t yourdockerhubusername/nodejs-demo-app:latest .
+Run the container:
+docker run -p 3000:3000 yourdockerhubusername/nodejs-demo-app:latest .
+
+Check Conatiner running or not
+docker ps
+then visit localhost:3000
+now a web page gives reponse Node.js CI/CD Demo running successfully!
+
+Note:
+Initialize and connect git:
+git init
+git remote add origin https://github.com/<your-username>/nodejs-demo-app.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+
+Cleaning the set up for docker container
+Stop the container 
+run docker ps ( then cpoy container id )
+run docker stop container id 
+run docker rm container id ( deletes the container)
